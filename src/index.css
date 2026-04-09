@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+:root {
+  --background: #050505;
+  --foreground: #ededed;
+  
+  /* Primary Accent: Neon Blue/Purple (HSL: 250 100% 65%) */
+  --accent: 250 100% 65%; 
+
+  --font-inter: "Inter", sans-serif;
+  --font-space: "Space Grotesk", sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: hsl(var(--accent));
+  
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-space), ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-accent: 0 0 20px hsl(var(--accent) / 0.4);
+  --shadow-accent-strong: 0 0 30px hsl(var(--accent) / 0.6);
+  
+  --drop-shadow-accent: 0 0 10px hsl(var(--accent) / 0.6);
+  --drop-shadow-accent-strong: 0 0 20px hsl(var(--accent) / 0.8);
+
+  /* Custom Spacing & Utilities to avoid arbitrary values */
+  --spacing-75: 18.75rem;  /* 300px */
+  --spacing-100: 25rem;    /* 400px */
+  --spacing-125: 31.25rem; /* 500px */
+  --spacing-150: 37.5rem;  /* 600px */
+  --spacing-250: 62.5rem;  /* 1000px */
+  
+  --radius-4xl: 2rem;      /* 32px */
+  --radius-5xl: 2.5rem;    /* 40px */
+  --radius-6xl: 3rem;      /* 48px */
+
+  --z-100: 100;
+}
+
+@layer base {
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body.loading {
+    overflow: hidden;
+  }
+
+  ::selection {
+    background-color: hsl(var(--accent) / 0.3);
+    color: #fff;
+  }
+}
+
+/* Cinematic Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--accent) / 0.5);
+}
+
+/* Helper for the infinite marquee outline text */
+.outline-text {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+  color: transparent;
+}
+.outline-text:hover {
+  -webkit-text-stroke: 0px;
+  color: white;
+  text-shadow: 0 0 20px rgba(255,255,255,0.4);
+}
